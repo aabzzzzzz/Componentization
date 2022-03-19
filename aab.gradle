@@ -1,0 +1,28 @@
+//Groovy语言
+
+
+ext {
+
+    androidID = [
+            compileSdkVersion        : 30,
+            buildToolsVersion        : "30.0.3",
+
+            minSdkVersion            : 16,
+            targetSdkVersion         : 30,
+            versionCode              : 1,
+            versionName              : "1.0",
+    ]
+
+    // 建立Map存储，  key 和 value  都是自定义的
+    appID = [
+            app: "com.example.componentization",
+            login: "com.example.login",
+    ]
+
+    dependenciesID = [
+            "appcompat"       : "androidx.appcompat:appcompat:1.2.0",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.0.1",
+            "material"        : "com.google.android.material:material:1.2.1",
+    ]
+
+}

@@ -1,2 +1,4 @@
 rootProject.name = "Componentization"
 include ':app'
+include ':mylibrary'
+include ':login'
