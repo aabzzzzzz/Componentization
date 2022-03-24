@@ -2,22 +2,35 @@ plugins {
     id 'com.android.application'
 }
 
+// 完整的方式  性能
+def androidID = rootProject.ext.androidID
+
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion androidID.compileSdkVersion
+    buildToolsVersion androidID.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.example.login"
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId appID.login
+        minSdkVersion androidID.minSdkVersion
+        targetSdkVersion androidID.targetSdkVersion
+        versionCode androidID.versionCode
+        versionName androidID.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "boolean", "isRelease", String.valueOf(isRelease)
+        buildConfigField "boolean", "SHOW__LOG", "true"
+        buildConfigField "String", "APP_KEY", "\"123456\""
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "debug", "\"${url.debug}\"")
+        }
         release {
+            buildConfigField("String", "release", "\"${url.release}\"")
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
